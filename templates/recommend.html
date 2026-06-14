@@ -1,146 +1,308 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Book Recommendation System</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
-  <style>
-    body {
-      background-color: #121212;
-      color: white;
-      font-family: 'Poppins', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendations</title>
 
-    .navbar {
-      background-color: #00a65a;
-      padding: 1rem 2rem;
-    }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    .navbar-brand {
-      font-weight: 600;
-      font-size: 1.5rem;
-      color: white;
-    }
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    .nav-link {
-      color: white;
-      margin-left: 20px;
-      transition: color 0.3s ease;
-    }
+    <style>
 
-    .nav-link:hover {
-      color: #ffd700;
-    }
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
 
-    h1 {
-      margin-top: 30px;
-      font-weight: 600;
-      text-align: center;
-      color: #00ffcc;
-    }
+        body{
+            font-family:'Poppins',sans-serif;
+            background:
+            linear-gradient(
+                    135deg,
+                    #0f172a,
+                    #1e293b,
+                    #111827);
+            color:white;
+            min-height:100vh;
+        }
 
-    .form-control-lg {
-      background-color: #1e1e1e;
-      border: 2px solid #00ffcc;
-      color: white;
-      border-radius: 10px;
-      padding: 15px;
-    }
+        /* NAVBAR */
 
-    .form-control-lg::placeholder {
-      color: #cccccc;
-    }
+        .navbar{
+            background:rgba(255,255,255,.05);
+            backdrop-filter:blur(15px);
+            border-bottom:1px solid rgba(255,255,255,.08);
+        }
 
-    .btn-warning {
-      background-color: #00a65a;
-      border: none;
-      color: white;
-      padding: 10px 30px;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
+        .navbar-brand{
+            font-weight:700;
+            font-size:28px;
+            color:white !important;
+        }
 
-    .btn-warning:hover {
-      background-color: #00914f;
-    }
+        .nav-link{
+            color:white !important;
+        }
 
-    .card {
-      background-color: #1e1e1e;
-      border: none;
-      border-radius: 15px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      margin-bottom: 30px;
-    }
+        .nav-link:hover{
+            color:#00ffd5 !important;
+        }
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 20px rgba(0, 166, 90, 0.4);
-    }
+        /* HEADER */
 
-    .card-img-top {
-      border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
-      height: 250px;
-      object-fit: cover;
-    }
+        .hero{
+            margin-top:60px;
+            text-align:center;
+        }
 
-    .card-body h2 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #00ffcc;
-    }
+        .hero h1{
+            font-size:55px;
+            font-weight:700;
+        }
 
-    .card-body h4 {
-      font-size: 0.9rem;
-      color: #cccccc;
-    }
-  </style>
+        .hero p{
+            color:#94a3b8;
+            font-size:18px;
+        }
+
+        /* SEARCH */
+
+        .search-box{
+            max-width:700px;
+            margin:50px auto;
+        }
+
+        .form-control{
+            background:#1e293b;
+            border:none;
+            color:white;
+            border-radius:50px;
+            padding:18px 25px;
+            font-size:18px;
+        }
+
+        .form-control:focus{
+            background:#1e293b;
+            color:white;
+            box-shadow:0 0 30px rgba(0,255,204,.4);
+        }
+
+        .btn-success{
+            border-radius:50px;
+            padding:15px 40px;
+            font-size:18px;
+            margin-top:25px;
+        }
+
+        /* CARD */
+
+        .card{
+            background:rgba(255,255,255,.05);
+            border:1px solid rgba(255,255,255,.08);
+            backdrop-filter:blur(20px);
+            border-radius:25px;
+            overflow:hidden;
+            transition:.4s;
+        }
+
+        .card:hover{
+            transform:translateY(-10px);
+            box-shadow:
+                    0 10px 30px rgba(0,255,204,.2);
+        }
+
+        .card-img-top{
+            height:320px;
+            object-fit:cover;
+        }
+
+        .card-body h3{
+            color:#00ffd5;
+            font-size:18px;
+            font-weight:600;
+        }
+
+        .card-body h5{
+            color:#cbd5e1;
+            font-size:14px;
+        }
+
+        footer{
+            margin-top:70px;
+            padding:30px;
+            text-align:center;
+            color:#94a3b8;
+        }
+
+        @media(max-width:768px){
+
+            .hero h1{
+                font-size:38px;
+            }
+
+            .card-img-top{
+                height:250px;
+            }
+
+        }
+
+    </style>
+
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#">📚 My Book Recommender</a>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="/recommend">Recommend</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-dark">
 
-  <div class="container">
-    <h1>📖 Recommend Books</h1>
-    <div class="row justify-content-center my-4">
-      <div class="col-md-8">
-        <form action="/recommend_books" method="post">
-          <input type="text" name="user_input" class="form-control form-control-lg" placeholder="Type a book you like..."><br>
-          <div class="text-center">
-            <input type="submit" class="btn btn-warning btn-lg" value="Recommend">
-          </div>
-        </form>
-      </div>
+    <div class="container">
+
+        <a class="navbar-brand" href="/">
+            📚 My Book Recommender
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse"
+             id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/recommend">
+                        Recommend
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
     </div>
+
+</nav>
+
+
+<div class="container">
+
+    <div class="hero">
+
+        <h1>
+            📖 Discover Similar Books
+        </h1>
+
+        <p>
+            Enter your favorite book and get personalized recommendations
+        </p>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <form action="/recommend_books" method="post">
+
+            <input
+                    type="text"
+                    name="user_input"
+                    class="form-control"
+                    placeholder="🔍 Enter a book name..."
+                    required>
+
+            <div class="text-center">
+
+                <button
+                        class="btn btn-success">
+
+                    ✨ Recommend Books
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    {% if error %}
+
+    <div class="alert alert-danger text-center">
+
+        {{ error }}
+
+    </div>
+
+    {% endif %}
+
 
     <div class="row">
-      {% if data %}
-        {% for i in data %}
-        <div class="col-md-3">
-          <div class="card">
-            <img class="card-img-top" src="{{ i[2] }}" alt="Book Cover">
-            <div class="card-body">
-              <h2>{{ i[0] }}</h2>
-              <h4>{{ i[1] }}</h4>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      {% endif %}
-    </div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+        {% if data %}
+
+        {% for i in data %}
+
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4">
+
+            <div class="card">
+
+                <img
+                        src="{{ i[2] }}"
+                        class="card-img-top">
+
+                <div class="card-body">
+
+                    <h3>
+
+                        {{ i[0] }}
+
+                    </h3>
+
+                    <h5>
+
+                        ✍️ {{ i[1] }}
+
+                    </h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    Made with ❤️ using Flask
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
+ 
